@@ -127,6 +127,18 @@ class SurveyGUI() : JFrame(), ItemListener {
         adminPanel = JPanel()
 
 
+        val surveyList = arrayOf("temp", "temp2")
+        surveyBox = JComboBox<String>(surveyList)
+        surveyBox.font = surveyBox.font.deriveFont(20f)
+        surveyBox.addItemListener(this)
+        surveyBox.setPreferredSize(Dimension(160, 80))
+        surveyBox.setMinimumSize(surveyBox.getPreferredSize())
+        surveyBox.setMaximumSize(surveyBox.getPreferredSize())
+        userPanel.add(surveyBox)
+
+        val questionContentLabel = JLabel(". . .", SwingConstants.CENTER)
+        userPanel.add(questionContentLabel)
+
         val userPanelButton = JButton("User Panel")
         userPanelButton.addActionListener {
             userUI()
@@ -143,7 +155,7 @@ class SurveyGUI() : JFrame(), ItemListener {
         defaultCloseOperation = EXIT_ON_CLOSE
         adminPanel.setSize(800, 560)
         setLocationRelativeTo(null)
-        createLayout(adminPanel, userPanelButton)
+        createLayout(adminPanel, surveyBox, questionContentLabel, userPanelButton)
 
     }
 
@@ -232,8 +244,16 @@ class SurveyGUI() : JFrame(), ItemListener {
             gl.setHorizontalGroup(
                 gl.createSequentialGroup()
                     .addGroup(
-                        gl.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        gl.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(arg[0])
+                    )
+                    .addGroup(
+                        gl.createParallelGroup(GroupLayout.Alignment.CENTER)
+                            .addComponent(arg[1])
+                    )
+                    .addGroup(
+                        gl.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(arg[2])
                     )
             )
 
@@ -242,6 +262,8 @@ class SurveyGUI() : JFrame(), ItemListener {
                     .addGroup(
                         gl.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(arg[0])
+                            .addComponent(arg[1])
+                            .addComponent(arg[2])
                     )
             )
 
