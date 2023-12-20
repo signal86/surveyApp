@@ -1,4 +1,4 @@
-package org.sig86.survey
+package me.sig86.survey
 
 import java.awt.EventQueue
 import java.awt.Color
